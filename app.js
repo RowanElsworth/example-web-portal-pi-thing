@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const http = require('http');
-const socketIO = require('socket.io');
+// const socketIO = require('socket.io');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { ObjectId } = require('mongodb');
@@ -12,7 +12,7 @@ const { authenticateUser } = require('./routes/auth')
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server, { transports: ['websocket', 'polling'] });
+// const io = socketIO(server, { transports: ['websocket', 'polling'] });
 
 // Enable CORS
 app.use((req, res, next) => {
@@ -223,37 +223,37 @@ app.route('/users/:id/password')
 
 app.post('/light', (req, res) => {
   // Emit a Socket.IO event to Raspberry Pi
-  io.emit('detection-control', req.body.checked);
+  // io.emit('detection-control', req.body.checked);
   res.send('Button click event handled and Socket.IO event emitted');
 });
 
 app.post('/current-state-req', (req, res) => {
   // Emit a Socket.IO event to Raspberry Pi
-  io.emit('current-state-req');
+  // io.emit('current-state-req');
   res.send('State requested from Pi');
 });
 
 // Use the io object to listen for connections and handle events
-io.on('connection', (socket) => {
-  socket.on('ready', (data) => {
-    console.log(data.message);
-    console.log(data.state);
-  });
+// io.on('connection', (socket) => {
+//   socket.on('ready', (data) => {
+//     console.log(data.message);
+//     console.log(data.state);
+//   });
 
-  socket.on('current-state-push', (data) => {
-    console.log('Received data from Pi, Current detection state:', data.state);
-    io.emit('current-state-front', data.state);
-  });
+//   socket.on('current-state-push', (data) => {
+//     console.log('Received data from Pi, Current detection state:', data.state);
+//     io.emit('current-state-front', data.state);
+//   });
 
-  socket.on('pi-activated', (data) => {
-    console.log(data.message);
-    io.emit('pi-activated-front', data);
-  });
+//   socket.on('pi-activated', (data) => {
+//     console.log(data.message);
+//     io.emit('pi-activated-front', data);
+//   });
 
-  socket.on('disconnect', () => {
-    console.log('Client disconnected:', socket.id);
-  });
-});
+//   socket.on('disconnect', () => {
+//     console.log('Client disconnected:', socket.id);
+//   });
+// });
 
 // Pages
 app.get('/login', async (req, res) => {
