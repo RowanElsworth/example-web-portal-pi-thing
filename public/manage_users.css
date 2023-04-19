@@ -1,0 +1,102 @@
+:root {
+  --log-head: #f0f0f0;
+  --log-body: #ddd;
+  --log-body-even: #f9f9f9;
+  --log-body-hvr: #f0f0f0;
+}
+
+.dark-mode {
+  --log-head: #969696;
+  --log-body: #ddd;
+  --log-body-even: #aaaaaa;
+  --log-body-hvr: #b99f9f;
+}
+
+.main__content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-content {
+  width: 30%;
+  height: 600px;
+  overflow: auto;
+}
+
+table {
+  font-size: 1.8rem;
+}
+
+#users {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#users thead th {
+  background-color: var(--log-head);
+  padding: 10px;
+  text-align: left;
+  font-size: 2.2rem;
+}
+
+#users tbody td {
+  padding: 10px;
+  border-bottom: 1px solid var(--log-body);
+  font-size: 1.8rem;
+}
+
+#users tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#users tbody tr:nth-child(even) {
+  background-color: var(--log-body-even);
+}
+
+#users tbody tr:hover {
+  background-color: var(--log-body-hvr);
+}
+
+#add-user-button {
+  width: 100%;
+  font-size: 2rem;
+  padding: 5px 0;
+}
+
+/* Pop up box */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
